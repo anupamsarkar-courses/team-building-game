@@ -1,0 +1,1 @@
+window.globalLoadJsAsset('story_content/6mp54FwDPUg_captions.js', {"captions":[{"langCode":"en-US","data":"WEBVTT%0D%0A%0D%0ANOTE%0D%0AKind%3A%20captions%0D%0ASource%3A%20Articulate%20Closed%20Captions%20Editor%0D%0ASource%20Version%3A%203.129.38633.0%0D%0A%0D%0A00%3A00%3A00.103%20--%3E%2000%3A00%3A02.295%0D%0AHow%20do%20you%20guide%20the%20team%20now%3F%0D%0A%0D%0A"}]})
