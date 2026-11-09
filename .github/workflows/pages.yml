@@ -22,14 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Prepare site
+      - name: Reassemble course.zip and prepare site
         run: |
-          mkdir _site
+          set -euo pipefail
+          mkdir -p _site
+          cat chunks/course.b64.* | tr -d '\n' | base64 -d > course.zip
           unzip -o course.zip -d _site
-          # ensure helpers exist even if zip layout changes
           test -f _site/story.html
-          test -f _site/index.html || printf '%s\n' '<!DOCTYPE html><meta http-equiv="refresh" content="0;url=story.html"><a href="story.html">Open course</a>' > _site/index.html
+          if [ ! -f _site/index.html ]; then
+            printf '%s\n' '<!DOCTYPE html><meta http-equiv="refresh" content="0;url=story.html"><a href="story.html">Open course</a>' > _site/index.html
+          fi
           touch _site/.nojekyll
+          rm -f course.zip
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
